@@ -1,13 +1,10 @@
-FROM alpine:3.12.0
+FROM debian
 RUN \
-    apk add --update --no-cache \
-      alpine-sdk \
-      gcc \
-      libffi-dev \
-      py-pip \
-      python3-dev \
-      openssl \
+    apt-get update && apt-get install -y \
+      python-pip \
     && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip install --upgrade pip && \
     pip install vaurien
 
 
